@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-05-01T18:00:00Z" product-name="iconfont">
+		<header/>
+		<body>
+			<trans-unit id="tt_content.tx_iconfont_icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tt_content.tx_iconfont_icon.I.0">
+				<source>none</source>
+			</trans-unit>
+        </body>
+	</file>
+</xliff>
