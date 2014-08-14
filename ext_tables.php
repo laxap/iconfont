@@ -10,15 +10,17 @@ if ( strlen($_EXTCONF) ) {
 
 // --- Icon font key/name --
 $iconFont = $extConf['iconFont'];
+$customIconDefFile = $extConf['customIconDefinitionFile'];
 
+// dummy icon options (if none loaded)
+$iconFontOption = array(array('no icons loaded', 0));
 
 // --- Load array with icons --
 //
-
 if ( $iconFont == 'custom' ) {
-	if ( file_exists(PATH_site . $extConf['customIconDefinitionFile']) ) {
-		include(PATH_site . $extConf['customIconDefinitionFile']);
-        }
+	if ( file_exists(PATH_site . $customIconDefFile) ) {
+		include(PATH_site . $customIconDefFile);
+	}
 } else {
 	// Load default icon font specific select array
 	if ( file_exists(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php') ) {
