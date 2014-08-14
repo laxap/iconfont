@@ -14,17 +14,17 @@ $iconFont = $extConf['iconFont'];
 
 // --- Load array with icons --
 //
-// overwrite
-if ( isset($GLOBALS['iconFontOption']) && is_array($GLOBALS['iconFontOption']) && count($GLOBALS['iconFontOption']) > 0 ) {
-	$iconFontOption = $GLOBALS['iconFontOption'];
-}
-if ( ! is_array($iconFontOption) || count($iconFontOption) == 0 ) {
+
+if ( $iconFont == 'custom' ) {
+	if ( file_exists(PATH_site . $extConf['customIconDefinitionFile']) ) {
+		include(PATH_site . $extConf['customIconDefinitionFile']);
+        }
+} else {
 	// Load default icon font specific select array
 	if ( file_exists(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php') ) {
 		include(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php');
 	}
 }
-
 
 // --- Add field --
 //
