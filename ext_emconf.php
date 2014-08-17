@@ -6,13 +6,13 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Icon font',
-	'description' => 'Support for fontawesome or fontello icon font. Allows to show an icon besides headers and add icons via RTE. RTE feature based on code from ext:fontawesome.',
+	'description' => 'Support for fontawesome or fontello icon font. Allows to show an icon besides headers and to add icons via RTE. RTE feature based on code from ext:fontawesome.',
 	'category' => 'misc',
 	'author' => 'Pascal Mayer',
 	'author_email' => 'typo3@simple.ch',
 	'author_company' => 'simplicity gmbh',
 	'shy' => '',
-	'version' => '0.5.1',
+	'version' => '0.5.2',
 	'priority' => '',
 	'module' => '',
 	'state' => 'beta',

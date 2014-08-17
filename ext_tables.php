@@ -59,15 +59,37 @@ switch ( $iconFont ) {
 	case 'fontawesome':
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
+    # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
+    cssFile = //maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css
+    # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
     fontClassPrefix = fa fa-
+    # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
     fontClassAddon =
 }');
 		break;
+
 	case 'fontello':
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
+    # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
+    cssFile = fileadmin/templates/fontello/css/fontello.css
+    # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
     fontClassPrefix = icon-
+    # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
     fontClassAddon =
 }');
+		break;
+
+	default:
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
+plugin.tx_iconfont {
+    # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
+    cssFile =
+    # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
+    fontClassPrefix =
+    # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
+    fontClassAddon =
+}');
+
 		break;
 }

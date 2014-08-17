@@ -1,9 +1,7 @@
 
-# --- lib.stdheader ----------
+#--- lib.stdheader ----------
 #
-# Icons in headers
 # Header 0, <h1>
-
 lib.stdheader.10.0.stdWrap.cObject = CASE
 lib.stdheader.10.0.stdWrap.cObject {
     key.field = tx_iconfont_icon
@@ -58,3 +56,12 @@ lib.stdheader.10.2.stdWrap.dataWrap >
 lib.stdheader.10.3.stdWrap.dataWrap >
 lib.stdheader.10.4.stdWrap.dataWrap >
 lib.stdheader.10.5.stdWrap.dataWrap >
+
+
+# --- page.includeCSS ---
+#
+page {
+    includeCSS {
+        iconfont = {$plugin.tx_iconfont.cssFile}
+    }
+}
