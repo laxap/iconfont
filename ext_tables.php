@@ -13,7 +13,7 @@ $iconFont = $extConf['iconFont'];
 $customIconDefFile = $extConf['customIconDefinitionFile'];
 
 // dummy icon options (if none loaded)
-$iconFontOption = array(array('no icons loaded', 0));
+$iconFontOption = array(array('', 0));
 
 // --- Load array with icons --
 //
@@ -93,3 +93,10 @@ plugin.tx_iconfont {
 
 		break;
 }
+
+
+
+// Default TS for iconfont
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
+// Optional for modified header (option in bootstrap_core to have subheader in header tag)
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (Optional)');

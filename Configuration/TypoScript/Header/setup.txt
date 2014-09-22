@@ -1,0 +1,64 @@
+
+lib.stdheader {
+    10.0.default >
+    10.0.default = COA
+    10.0.default {
+        10 = TEXT
+        10.current = 1
+        20 = TEXT
+        20 {
+            field = subheader
+            stdWrap.noTrimWrap = | <small>|</small>|
+            stdWrap.required = 1
+        }
+        stdWrap.dataWrap = <h1{register:headerClass}><i class="{$plugin.tx_iconfont.fontClassPrefix}{field:tx_iconfont_icon} {$plugin.tx_iconfont.fontClassAddon}"></i>|</h1>
+        stdWrap.noTrimWrap = | ||
+        stdWrap.required = 1
+    }
+
+    10.0.0 >
+    10.0.0 = COA
+    10.0.0 {
+        10 = TEXT
+        10.current = 1
+        20 = TEXT
+        20 {
+            field = subheader
+            stdWrap.noTrimWrap = | <small>|</small>|
+            stdWrap.required = 1
+        }
+        stdWrap.dataWrap = <h1{register:headerClass}>|</h1>
+        stdWrap.required = 1
+    }
+
+    10.1 < lib.stdheader.10.0
+    10.1 {
+        default.stdWrap.dataWrap = <h1{register:headerClass}><i class="{$plugin.tx_iconfont.fontClassPrefix}{field:tx_iconfont_icon} {$plugin.tx_iconfont.fontClassAddon}"></i>|</h1>
+        0.stdWrap.dataWrap = <h1{register:headerClass}>|</h1>
+    }
+
+    10.2 < lib.stdheader.10.0
+    10.2 {
+        default.stdWrap.dataWrap = <h2{register:headerClass}><i class="{$plugin.tx_iconfont.fontClassPrefix}{field:tx_iconfont_icon} {$plugin.tx_iconfont.fontClassAddon}"></i>|</h2>
+        0.stdWrap.dataWrap = <h2{register:headerClass}>|</h2>
+    }
+
+    10.3 < lib.stdheader.10.0
+    10.3 {
+        default.stdWrap.dataWrap = <h3{register:headerClass}><i class="{$plugin.tx_iconfont.fontClassPrefix}{field:tx_iconfont_icon} {$plugin.tx_iconfont.fontClassAddon}"></i>|</h3>
+        0.stdWrap.dataWrap = <h3{register:headerClass}>|</h3>
+    }
+
+    10.4 < lib.stdheader.10.0
+    10.4 {
+        default.stdWrap.dataWrap = <h4{register:headerClass}><i class="{$plugin.tx_iconfont.fontClassPrefix}{field:tx_iconfont_icon} {$plugin.tx_iconfont.fontClassAddon}"></i>|</h4>
+        0.stdWrap.dataWrap = <h4{register:headerClass}>|</h4>
+    }
+
+    10.5 < lib.stdheader.10.0
+    10.5 {
+        default.stdWrap.dataWrap = <h5{register:headerClass}><i class="{$plugin.tx_iconfont.fontClassPrefix}{field:tx_iconfont_icon} {$plugin.tx_iconfont.fontClassAddon}"></i>|</h5>
+        0.stdWrap.dataWrap = <h5{register:headerClass}>|</h5>
+    }
+
+}
