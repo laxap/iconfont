@@ -1,7 +1,7 @@
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Simplicity <typo3(at)simple.ch>
+ *  (c) 2015 Pascal Mayer <typo3(at)bsdist.ch>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -328,8 +328,8 @@ HTMLArea.InsertFontelloIcon = Ext.extend(HTMLArea.Plugin, {
 
         var pluginInformation = {
             version: '1.0',
-            developer: 'Simplicity',
-            developerUrl: 'http://www.simple.de/',
+            developer: 'Pascal Mayer',
+            developerUrl: '',
             copyrightOwner: '',
             sponsor: '',
             sponsorUrl: '',

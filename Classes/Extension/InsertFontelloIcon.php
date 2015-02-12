@@ -1,10 +1,10 @@
 <?php
-namespace Simplicity\Iconfont\Extension;
+namespace Laxap\Iconfont\Extension;
 
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2014 Simplicity <typo3(a)simple.ch>
+ *  (c) 2015 Pascal Mayer <typo3(a)bsdist.ch>
  *  All rights reserved
  *
  *  This script is part of the Typo3 project. The Typo3 project is
@@ -26,7 +26,6 @@ namespace Simplicity\Iconfont\Extension;
 /**
  * Insert Icon plugin for htmlArea RTE
  *
- * @author Simplicity <typo3(a)simple.ch>
  */
 class InsertFontelloIcon extends \TYPO3\CMS\Rtehtmlarea\RteHtmlAreaApi {
 
@@ -63,11 +62,11 @@ class InsertFontelloIcon extends \TYPO3\CMS\Rtehtmlarea\RteHtmlAreaApi {
 	/**
 	 * Return JS configuration of the htmlArea plugins registered by the extension
 	 *
-	 * @param 	integer		Relative id of the RTE editing area in the form
-	 * @return string		JS configuration for registered plugins
+	 * @param  integer $RTEcounter	Relative id of the RTE editing area in the form
+	 * @return string				JS configuration for registered plugins
 	 */
 	public function buildJavascriptConfiguration($RTEcounter) {
-		global $TSFE, $LANG;
+		//global $TSFE, $LANG;
 		$registerRTEinJavascriptString = '';
 		return $registerRTEinJavascriptString;
 	}

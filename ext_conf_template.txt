@@ -3,5 +3,7 @@
 iconFont = fontawesome
 
 # cat=basic; type=string; label=Path to php file with custom icon definition array.
-customIconDefinitionFile = 
+customIconDefinitionFile =
 
+# cat=basic; type=boolean; label=Support for the header/subheader rendering option in ext:bootstrap_core.:Adds another static template.
+enableHeaderRenderingOption = 0
