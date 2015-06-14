@@ -7,8 +7,8 @@
 .. include:: Images.txt
 
 
-Grids for bootstrap
-===================
+Icon font
+=========
 
 :Keywords: forEditors, forAdmins, forDevelopers
 :Author: |author|
