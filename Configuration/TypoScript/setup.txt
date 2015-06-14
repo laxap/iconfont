@@ -2,6 +2,16 @@
 #--- lib.stdheader ----------
 #
 lib.stdheader {
+    # add class to header if icon used (thanxs to Freddy Tripold)
+    3.headerClass.cObject{
+        30 = TEXT
+        30 {
+            value = iconfont
+            if.isTrue.field = tx_iconfont_icon
+            noTrimWrap = | ||
+        }
+    }
+
     # Header 0, <h1>
     10.0 >
     10.0 = CASE
