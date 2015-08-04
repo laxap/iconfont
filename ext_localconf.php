@@ -26,6 +26,13 @@ switch ( $iconFont ) {
 		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon']['addIconsToSkin'] = 1;
 		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon']['disableInFE'] = 0;
 		break;
+
+	case 'devicons':
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertDevIcons'] = array();
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertDevIcons']['objectReference'] = '&Laxap\\Iconfont\\Extension\\InsertDevIcons';
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertDevIcons']['addIconsToSkin'] = 1;
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertDevIcons']['disableInFE'] = 0;
+		break;
 }
 
 

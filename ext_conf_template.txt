@@ -1,5 +1,5 @@
 
-# cat=basic; type=options[fontawesome,fontello,custom]; label=Use predefined fontawesome or fontello icons or custom definition.
+# cat=basic; type=options[fontawesome,fontello,devicons,custom]; label=Use predefined fontawesome or fontello icons or custom definition.
 iconFont = fontawesome
 
 # cat=basic; type=string; label=Path to php file with custom icon definition array.
