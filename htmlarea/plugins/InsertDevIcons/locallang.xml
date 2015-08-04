@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Labels for iconfont plugin of htmlArea RTE</description>
+		<type>module</type>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+            <label index="devicons">Insert DevIcons Icon</label>
+
+            <label index="devicons.group.0">Devicons</label>
+
+            <label index="Close">Close</label>
+		</languageKey>
+	</data>
+</T3locallang>

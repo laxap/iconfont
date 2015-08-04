@@ -17,6 +17,7 @@ $iconFontOption = array(array('', 0));
 
 // --- Load array with icons --
 //
+
 if ( $iconFont == 'custom' ) {
 	if ( file_exists(PATH_site . $customIconDefFile) ) {
 		include(PATH_site . $customIconDefFile);
@@ -75,6 +76,18 @@ plugin.tx_iconfont {
     cssFile = fileadmin/templates/fontello/css/fontello.css
     # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
     fontClassPrefix = icon-
+    # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
+    fontClassAddon =
+}');
+		break;
+
+	case 'devicons':
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
+plugin.tx_iconfont {
+    # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
+    cssFile = //cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css
+    # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
+    fontClassPrefix = devicons devicons-
     # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
     fontClassAddon =
 }');
