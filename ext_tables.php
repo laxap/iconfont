@@ -54,7 +54,7 @@ $tempColumn = array(
 	)
 );
 // show icons in select options
-$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1;
+//$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1;
 // don't show icons below select box
 $tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 'ONLY_SELECTED';
 // add after header_layout
