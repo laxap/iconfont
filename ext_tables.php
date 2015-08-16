@@ -1,19 +1,22 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
+
+$iconFont = '';
+$customIconDefFile = '';
+$iconFontOption = array(array('', 0));
+
+
 // --- Get extension configuration ---
 $extConf = array();
 if ( strlen($_EXTCONF) ) {
 	$extConf = unserialize($_EXTCONF);
+
+	// --- Icon font key/name --
+	$iconFont = $extConf['iconFont'];
+	$customIconDefFile = $extConf['customIconDefinitionFile'];
 }
 
-
-// --- Icon font key/name --
-$iconFont = $extConf['iconFont'];
-$customIconDefFile = $extConf['customIconDefinitionFile'];
-
-// dummy icon options (if none loaded)
-$iconFontOption = array(array('', 0));
 
 // --- Load array with icons --
 //
@@ -25,6 +28,13 @@ if ( $iconFont == 'custom' ) {
 	// Load default icon font specific select array
 	if ( file_exists(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php') ) {
 		include(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php');
+	}
+
+	// Add CSS for icon in RTE
+	if (TYPO3_MODE == "BE")   {
+		if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
+			$TBE_STYLES['inDocStyles_TBEstyle'] .= '@import "/typo3conf/ext/iconfont/Resources/Public/Css/htmlarea.min.css";';
+		}
 	}
 }
 
@@ -60,7 +70,7 @@ switch ( $iconFont ) {
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
     # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
-    cssFile = //maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css
+    cssFile = //maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css
     # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
     fontClassPrefix = fa fa-
     # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
@@ -90,11 +100,8 @@ plugin.tx_iconfont {
     # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
     fontClassAddon =
 }');
-
 		break;
 }
-
-
 
 // Default TS for iconfont
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
