@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file source-language="en" datatype="plaintext" original="messages" date="2015-08-15T17:38:35Z" product-name="iconfont">
+        <header/>
+        <body>
+            <trans-unit id="fontawesome">
+                <source>Insert Font Awesome Icon</source>
+            </trans-unit>
+            <trans-unit id="fontawesome.group.0">
+                <source>Web App</source>
+            </trans-unit>
+            <trans-unit id="fontawesome.group.1">
+                <source>More</source>
+            </trans-unit>
+            <trans-unit id="fontawesome.group.2">
+                <source>Editor</source>
+            </trans-unit>
+            <trans-unit id="fontawesome.group.3">
+                <source>Directional</source>
+            </trans-unit>
+            <trans-unit id="fontawesome.group.4">
+                <source>Brand</source>
+            </trans-unit>
+            <trans-unit id="fontawesome.group.5">
+                <source>New in 4.4</source>
+            </trans-unit>
+            <trans-unit id="Close">
+                <source>Close</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
