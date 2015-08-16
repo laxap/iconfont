@@ -9,11 +9,11 @@
             <label index="fontawesome">Insert Font Awesome Icon</label>
 
             <label index="fontawesome.group.0">Web App</label>
-            <label index="fontawesome.group.1">Text Editor</label>
-            <label index="fontawesome.group.2">Directional</label>
-            <label index="fontawesome.group.3">More</label>
+            <label index="fontawesome.group.1">More</label>
+            <label index="fontawesome.group.2">Editor</label>
+            <label index="fontawesome.group.3">Directional</label>
             <label index="fontawesome.group.4">Brand</label>
-            <label index="fontawesome.group.5">New in 4.1</label>
+            <label index="fontawesome.group.5">New in 4.4</label>
 
             <label index="Close">Close</label>
 		</languageKey>
