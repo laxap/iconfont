@@ -6,37 +6,28 @@ $extConf = array();
 if ( strlen($_EXTCONF) ) {
 	$extConf = unserialize($_EXTCONF);
 }
-
-// --- Icon font key/name --
-$iconFont = $extConf['iconFont'];
+// default is fontawesome
+if ( ! isset($extConf['iconFont']) || trim($extConf['iconFont']) == '' ) {
+	$extConf['iconFont'] = 'fontawesome';
+}
 
 // --- Add RTE plugin --
 //
-switch ( $iconFont ) {
-	case 'fontawesome':
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon'] = array();
-		if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
-			$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['objectReference'] = 'Laxap\\Iconfont\\Extension\\InsertIcon';
-		} else {
-			$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['objectReference'] = '&Laxap\\Iconfont\\Extension\\InsertIcon';
-		}
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['addIconsToSkin'] = 1;
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['disableInFE'] = 0;
-		break;
-
-	case 'fontello':
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon'] = array();
-		if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
-			$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon']['objectReference'] = 'Laxap\\Iconfont\\Extension\\InsertFontelloIcon';
-		} else {
-			$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon']['objectReference'] = '&Laxap\\Iconfont\\Extension\\InsertFontelloIcon';
-		}
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon']['addIconsToSkin'] = 1;
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertFontelloIcon']['disableInFE'] = 0;
-		break;
+if ( $extConf['iconFont'] != 'custom' ) {
+	if ( $extConf['iconFont'] == 'fontello' ) {
+		$pluginName = 'InsertFontelloIcon';
+	} else {
+		$pluginName = 'InsertIcon';
+	}
+	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName] = array();
+	if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['objectReference'] = 'Laxap\\Iconfont\\Extension\\InsertIcon';
+	} else {
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['objectReference'] = '&Laxap\\Iconfont\\Extension\\InsertIcon';
+	}
+	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['addIconsToSkin'] = 1;
+	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['disableInFE'] = 0;
 }
-
-
 
 // --- Load default page TSconfig ---
 //

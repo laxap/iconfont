@@ -1,8 +1,7 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-
-$iconFont = '';
+$iconFont = 'fontawesome';
 $customIconDefFile = '';
 $iconFontOption = array(array('', 0));
 
@@ -11,8 +10,6 @@ $iconFontOption = array(array('', 0));
 $extConf = array();
 if ( strlen($_EXTCONF) ) {
 	$extConf = unserialize($_EXTCONF);
-
-	// --- Icon font key/name --
 	$iconFont = $extConf['iconFont'];
 	$customIconDefFile = $extConf['customIconDefinitionFile'];
 }
@@ -66,18 +63,6 @@ $tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 'ONLY_SELECTED';
 // --- Add static ts configurations  --
 //
 switch ( $iconFont ) {
-	case 'fontawesome':
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
-plugin.tx_iconfont {
-    # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
-    cssFile = //maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css
-    # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
-    fontClassPrefix = fa fa-
-    # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
-    fontClassAddon =
-}');
-		break;
-
 	case 'fontello':
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
@@ -94,9 +79,9 @@ plugin.tx_iconfont {
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
     # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
-    cssFile =
+    cssFile = https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css
     # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
-    fontClassPrefix =
+    fontClassPrefix = fa fa-
     # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
     fontClassAddon =
 }');
