@@ -77,5 +77,6 @@ lib.stdheader {
 page {
     includeCSS {
         iconfont = {$plugin.tx_iconfont.cssFile}
+		iconfont.excludeFromConcatenation = 1
     }
 }
