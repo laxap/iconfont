@@ -1,19 +1,9 @@
 {
   "name": "laxap/iconfont",
-  "description": "Support for fontawesome or fontello icon font. Allows to show an icon besides headers and to add icons via RTE. RTE feature based on code from ext:fontawesome.",
-  "version": "0.7.1",
   "type": "typo3-cms-extension",
+  "version": "0.7.1",
+  "description": "Support for fontawesome or fontello icon font. Allows to show an icon besides headers and to add icons via RTE. RTE feature based on code from ext:fontawesome.",
   "keywords": ["typo3", "TYPO3 CMS", "bootstrap", "bsdist", "fontawesome", "font awesome", "fontello", "iconfont"],
   "homepage": "http://www.bsdist.ch",
-  "license": "GPL-3.0+",
-  "authors": [
-    {
-      "name": "Pascal Mayer",
-      "email": "typo3@bsdist.ch",
-      "role": "Developer"
-    }
-  ],
-  "require": {
-    "php": ">=5.3.7"
-  },
+  "license": ["GPL-2.0"]
 }
