@@ -60,32 +60,58 @@ $tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 'ONLY_SELECTED';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
 
 
-// --- Add static ts configurations  --
+// --- Typoscript Constants and page TSconfig  --
 //
 switch ( $iconFont ) {
 	case 'fontello':
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
-plugin.tx_iconfont {
-    # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
-    cssFile = fileadmin/templates/fontello/css/fontello.css
-    # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
-    fontClassPrefix = icon-
-    # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
-    fontClassAddon =
-}');
+		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/fontello/css/fontello.min.css';
+		$contentCssFile = 'typo3conf/ext/iconfont/Resources/Public/Css/rte/fontello.css'; # for older versions
+		$fontClassPrefix = 'icon-';
+		$fontClassAddon = '';
+		break;
+
+	case 'custom':
+		$fontCssFile = '';
+		$contentCssFile = '';
+		$fontClassPrefix = '';
+		$fontClassAddon = '';
 		break;
 
 	default:
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
+		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/font-awesome/css/font-awesome.min.css';
+		$contentCssFile = 'typo3conf/ext/iconfont/Resources/Public/Css/rte/font-awesome.css'; # for older versions
+		$fontClassPrefix = 'fa fa-';
+		$fontClassAddon = '';
+		break;
+}
+
+// TypoScript constants
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
     # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
-    cssFile = https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css
+    cssFile = ' . $fontCssFile . '
     # cat=tx_iconfont/base/011; type=string; label=Icon font class prefix
-    fontClassPrefix = fa fa-
+    fontClassPrefix = ' . $fontClassPrefix . '
     # cat=tx_iconfont/base/012; type=string; label=Icon font class addon
-    fontClassAddon =
+    fontClassAddon = ' . $fontClassAddon . '
 }');
-		break;
+
+// Page TSconfig
+if ( $iconFont != 'custom' ) {
+
+	// Supports multiple contentCSS files
+	if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
+RTE.default.contentCSS >
+RTE.default.contentCSS.default = typo3/sysext/rtehtmlarea/res/contentcss/default.css
+RTE.default.contentCSS.iconfont = ' . $fontCssFile . '
+');
+	} else {
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
+RTE.default.contentCSS = ' . $contentCssFile . '
+');
+	}
+
 }
 
 // Default TS for iconfont

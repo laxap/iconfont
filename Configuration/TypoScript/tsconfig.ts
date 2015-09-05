@@ -3,8 +3,6 @@
  * RTE.default
  */
 RTE.default {
-	# Change CSS for RTE (with font-awesome.min.css included)
-	contentCSS = typo3conf/ext/iconfont/Resources/Public/Css/rte.css
 	# Tags allowed outside p & div
 	proc.allowTagsOutside := addToList(i)
 	# Do not remove i tags

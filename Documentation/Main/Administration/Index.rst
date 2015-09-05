@@ -28,10 +28,9 @@ Installation
 
 
 
-Include font-awesome CSS in RTE contentCSS file
------------------------------------------------
+Displaying icons in the Rich Text Editor
+----------------------------------------
 
-In your css file for the RTE (RTE.default.contentCSS) the font-awesome.min.css has to be included to display added icons in the rich text editor.
+Version 0.7.1 and above adds the font icon CSS file to RTE.default.contentCSS.
 
-E.g.
-@import "/typo3conf/ext/iconfont/Resources/Public/Lib/font-awesome/css/font-awesome.min.css";
+If added icons are not displayed in the RTE please check RTE.default.contentCSS and verify that the CSS of the icon font is loaded.

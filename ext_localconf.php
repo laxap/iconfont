@@ -21,9 +21,9 @@ if ( $extConf['iconFont'] != 'custom' ) {
 	}
 	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName] = array();
 	if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['objectReference'] = 'Laxap\\Iconfont\\Extension\\InsertIcon';
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['objectReference'] = 'Laxap\\Iconfont\\Extension\\' . $pluginName;
 	} else {
-		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['objectReference'] = '&Laxap\\Iconfont\\Extension\\InsertIcon';
+		$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['objectReference'] = '&Laxap\\Iconfont\\Extension\\' . $pluginName;
 	}
 	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['addIconsToSkin'] = 1;
 	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins'][$pluginName]['disableInFE'] = 0;
