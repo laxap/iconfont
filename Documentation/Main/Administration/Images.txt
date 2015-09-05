@@ -4,3 +4,7 @@
 
 .. |img-includestatic|      image:: ../Images/Administration/IncludeStatic.png
 .. :align: left
+
+
+.. |img-contentcss|      image:: ../Images/Administration/contentcss.png
+.. :align: left
