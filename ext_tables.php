@@ -50,10 +50,12 @@ $tempColumn = array(
 		)
 	)
 );
-// show icons in select options
-//$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1;
+if ( $iconFont == 'fontawesome' ) {
+	// show icons in select options
+	$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1;
+}
 // don't show icons below select box
-$tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 'ONLY_SELECTED';
+$tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 1;
 // add after header_layout
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
