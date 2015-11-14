@@ -45,6 +45,7 @@ $tempColumn = array(
 		'label' => 'LLL:EXT:iconfont/Resources/Private/Language/locallang_db.xlf:tt_content.tx_iconfont_icon',
 		'config' => array (
 			'type' => 'select',
+			'renderType' => 'selectSingle',
 			'default' => '0',
 			'size' => 1,
 			'maxitems' => 1,
