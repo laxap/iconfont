@@ -1,8 +1,6 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
 $iconFont = 'fontawesome';
 $customIconDefFile = '';
 $iconFontOption = array(array('', 0));
@@ -60,9 +58,9 @@ if ( $iconFont == 'fontawesome' ) {
 // don't show icons below select box
 $tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 1;
 // add after header_layout
-ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
-ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
 
 
 // --- Typoscript Constants and page TSconfig  --
@@ -91,7 +89,7 @@ switch ( $iconFont ) {
 }
 
 // TypoScript constants
-ExtensionManagementUtility::addTypoScriptConstants('
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
     # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
     cssFile = ' . $fontCssFile . '
@@ -106,13 +104,13 @@ if ( $iconFont != 'custom' ) {
 
 	// Supports multiple contentCSS files
 	if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
-		ExtensionManagementUtility::addPageTSConfig('
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 RTE.default.contentCSS >
 RTE.default.contentCSS.default = typo3/sysext/rtehtmlarea/res/contentcss/default.css
 RTE.default.contentCSS.iconfont = ' . $fontCssFile . '
 ');
 	} else {
-		ExtensionManagementUtility::addPageTSConfig('
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 RTE.default.contentCSS = ' . $contentCssFile . '
 ');
 	}
@@ -120,9 +118,9 @@ RTE.default.contentCSS = ' . $contentCssFile . '
 }
 
 // Default TS for iconfont
-ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
 
 // Optional for modified header (option in bootstrap_core to have subheader in header tag)
 if ( isset($extConf['enableHeaderRenderingOption']) && $extConf['enableHeaderRenderingOption'] ) {
-	ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (addon)');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (addon)');
 }
