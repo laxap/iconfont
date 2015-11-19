@@ -8,7 +8,7 @@ lib.stdheader {
         30 {
             value = iconfont
             if.isTrue.field = tx_iconfont_icon
-            noTrimWrap = | ||
+            noTrimWrap = | | |
         }
     }
 
