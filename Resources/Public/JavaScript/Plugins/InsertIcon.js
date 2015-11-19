@@ -12,7 +12,7 @@
  */
 
 /**
- * Abbreviation plugin for htmlArea RTE
+ * Font icon plugin for htmlArea RTE
  */
 define('TYPO3/CMS/Rtehtmlarea/Plugins/InsertIcon',
     ['TYPO3/CMS/Rtehtmlarea/HTMLArea/Plugin/Plugin',
