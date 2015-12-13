@@ -124,3 +124,9 @@ RTE.default.contentCSS = ' . $contentCssFile . '
 if ( isset($extConf['enableHeaderRenderingOption']) && $extConf['enableHeaderRenderingOption'] ) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (addon)');
 }
+
+// for 7.4+
+if (TYPO3_MODE == "BE")   {
+	$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;
+	$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['stylesheetDirectories']['css'] = 'EXT:iconfont/Resources/Public/Css/';
+}
