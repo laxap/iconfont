@@ -82,6 +82,14 @@ RTE.default.contentCSS = ' . $contentCssFile . '
 
 }
 
+// Default TS for iconfont
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
+
+// Optional for modified header (option in bootstrap_core to have subheader in header tag)
+if ( isset($extConf['enableHeaderRenderingOption']) && $extConf['enableHeaderRenderingOption'] ) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (addon)');
+}
+
 // for 7.4+
 if (TYPO3_MODE == "BE")   {
 	$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;

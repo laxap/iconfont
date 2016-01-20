@@ -69,13 +69,6 @@ plugin.tx_iconfont {
     fontClassAddon = ' . $fontClassAddon . '
 }');
 
-// Default TS for iconfont
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
-
-// Optional for modified header (option in bootstrap_core to have subheader in header tag)
-if ( isset($extConf['enableHeaderRenderingOption']) && $extConf['enableHeaderRenderingOption'] ) {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (addon)');
-}
 
 // --- Load default page TSconfig ---
 //
