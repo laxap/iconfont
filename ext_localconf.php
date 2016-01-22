@@ -38,21 +38,18 @@ if ( $extConf['iconFont'] != 'custom' ) {
 switch ( $extConf['iconFont'] ) {
 	case 'fontello':
 		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/fontello/css/fontello.min.css';
-		$contentCssFile = 'typo3conf/ext/iconfont/Resources/Public/Css/rte/fontello.css';
 		$fontClassPrefix = 'icon-';
 		$fontClassAddon = '';
 		break;
 
 	case 'custom':
 		$fontCssFile = '';
-		$contentCssFile = '';
 		$fontClassPrefix = '';
 		$fontClassAddon = '';
 		break;
 
 	default:
 		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/font-awesome/css/font-awesome.min.css';
-		$contentCssFile = 'typo3conf/ext/iconfont/Resources/Public/Css/rte/font-awesome.css';
 		$fontClassPrefix = 'fa fa-';
 		$fontClassAddon = '';
 		break;
