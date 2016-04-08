@@ -39,7 +39,7 @@ if ( $iconFont == 'custom' && $customIconDefFile ) {
 //
 $tempColumn = array(
 	'tx_iconfont_icon' => array (
-		'exclude' => 0,
+		'exclude' => 1,
 		'label' => 'LLL:EXT:iconfont/Resources/Private/Language/locallang_db.xlf:tt_content.tx_iconfont_icon',
 		'config' => array (
 			'type' => 'select',
@@ -61,6 +61,10 @@ $tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 1;
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
+
+// Add to "pages"
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumn, 1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'title', '--linebreak--, tx_iconfont_icon', 'after:subtitle');
 
 
 
