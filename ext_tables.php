@@ -39,7 +39,7 @@ if ( $iconFont == 'custom' && $customIconDefFile ) {
 //
 $tempColumn = array(
 	'tx_iconfont_icon' => array (
-		'exclude' => 0,
+		'exclude' => 1,
 		'label' => 'LLL:EXT:iconfont/Resources/Private/Language/locallang_db.xlf:tt_content.tx_iconfont_icon',
 		'config' => array (
 			'type' => 'select',
@@ -47,22 +47,25 @@ $tempColumn = array(
 			'default' => '0',
 			'size' => 1,
 			'maxitems' => 1,
-			'items' => $iconFontOption
+			'items' => $iconFontOption,
+			'suppress_icons' => 1 // don't show icons below select box
 		)
 	)
 );
 if ( $iconFont == 'fontawesome' ) {
-	// show icons in select options
-	$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1;
+	$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1; // show icons in select options
 }
-// don't show icons below select box
-$tempColumn['tx_iconfont_icon']['config']['suppress_icons'] = 1;
-// add after header_layout
+
+// add to tt_content
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
 
-
+// add to pages
+if ( isset($extConf['showIconFieldOnPage']) && $extConf['showIconFieldOnPage'] == 1 ) {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumn, 1);
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'title', '--linebreak--, tx_iconfont_icon', 'after:subtitle');
+}
 
 // Page TSconfig
 switch ( $extConf['iconFont'] ) {
