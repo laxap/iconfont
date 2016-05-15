@@ -1,115 +1,93 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-$iconFont = 'fontawesome';
-$customIconDefFile = '';
-$iconFontOption = array(array('', 0));
-
-
 // --- Get extension configuration ---
 $extConf = array();
 if ( strlen($_EXTCONF) ) {
 	$extConf = unserialize($_EXTCONF);
-	$iconFont = $extConf['iconFont'];
-	$customIconDefFile = $extConf['customIconDefinitionFile'];
+}
+// default is fontawesome
+if ( ! isset($extConf['iconFont']) || trim($extConf['iconFont']) == '' ) {
+	$extConf['iconFont'] = 'fontawesome';
 }
 
-
-// --- Load array with icons --
-//
-if ( $iconFont == 'custom' && $customIconDefFile ) {
-	if ( file_exists(PATH_site . $customIconDefFile) ) {
-		include(PATH_site . $customIconDefFile);
-	}
-} else {
-	// Load default icon font specific select array
-	if ( file_exists(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php') ) {
-		include(PATH_site . 'typo3conf/ext/iconfont/ext_tables_' . $iconFont . '.php');
-	}
-
-	// Add CSS for icon in RTE
-	if (TYPO3_MODE == "BE")   {
-		if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
-			$TBE_STYLES['inDocStyles_TBEstyle'] .= '@import "/typo3conf/ext/iconfont/Resources/Public/Css/htmlarea.min.css";';
-		}
-	}
-}
-
-// --- Add field --
-//
-$tempColumn = array(
-	'tx_iconfont_icon' => array (
-		'exclude' => 1,
-		'label' => 'LLL:EXT:iconfont/Resources/Private/Language/locallang_db.xlf:tt_content.tx_iconfont_icon',
-		'config' => array (
-			'type' => 'select',
-			'renderType' => 'selectSingle',
-			'default' => '0',
-			'size' => 1,
-			'maxitems' => 1,
-			'items' => $iconFontOption,
-			'suppress_icons' => 1 // don't show icons below select box
-		)
-	)
-);
-if ( $iconFont == 'fontawesome' ) {
-	$tempColumn['tx_iconfont_icon']['config']['iconsInOptionTags'] = 1; // show icons in select options
-}
-
-// add to tt_content
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
-
-// add to pages
-if ( isset($extConf['showIconFieldOnPage']) && $extConf['showIconFieldOnPage'] == 1 ) {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumn, 1);
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'title', '--linebreak--, tx_iconfont_icon', 'after:subtitle');
-}
-
-// Page TSconfig
+// --- Fontawesome or custom ---
 switch ( $extConf['iconFont'] ) {
-	case 'fontello':
-		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/fontello/css/fontello.min.css';
-		$contentCssFile = 'typo3conf/ext/iconfont/Resources/Public/Css/rte/fontello.css';
-		break;
-
 	case 'custom':
-		$contentCssFile = '';
+		if ( isset($extConf['customIconDefinitionFile']) && file_exists(PATH_site . $extConf['customIconDefinitionFile']) ) {
+			$iconDefinitionFile = $extConf['customIconDefinitionFile'];
+		} else {
+			$iconDefinitionFile = '';
+		}
+		$htmlareaCssFile = isset($extConf['customHtmlareaCssFile'])?$extConf['customHtmlareaCssFile']:'';
+		$fontCssFile = isset($extConf['customFontCssFile'])?$extConf['customFontCssFile']:'';
+		$stylesheetDir = isset($extConf['customStylesheetDirectory'])?$extConf['customStylesheetDirectory']:'';
+		$iconsInOptionTags = 0; // may be enabled via TCEFORM for custom fonts
 		break;
 
 	default:
+		$iconDefinitionFile = 'typo3conf/ext/iconfont/ext_tables_fontawesome.php';
+		$htmlareaCssFile = '/typo3conf/ext/iconfont/Resources/Public/Css/htmlarea.min.css';
 		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/font-awesome/css/font-awesome.min.css';
-		$contentCssFile = 'typo3conf/ext/iconfont/Resources/Public/Css/rte/font-awesome.css';
+		$stylesheetDir = 'EXT:iconfont/Resources/Public/Css/';
+		$iconsInOptionTags = 1;
 		break;
 }
-if ( $iconFont != 'custom' ) {
 
-	// Supports multiple contentCSS files
-	if ( TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version) >= 7000000 ) {
+// --- Load, set configuration ---
+if ( $iconDefinitionFile != '' ) {
+	$iconFontOption = array(array('', 0));
+
+	// Load array with icons (overwrites $iconFontOption)
+	include(PATH_site . $iconDefinitionFile);
+
+	// Add field
+	$tempColumn = array(
+		'tx_iconfont_icon' => array (
+			'exclude' => 1,
+			'label' => 'LLL:EXT:iconfont/Resources/Private/Language/locallang_db.xlf:tt_content.tx_iconfont_icon',
+			'config' => array (
+				'type' => 'select',
+				'renderType' => 'selectSingle',
+				'default' => '0',
+				'size' => 1,
+				'maxitems' => 1,
+				'items' => $iconFontOption,
+				'suppress_icons' => 1, // don't show icons below select box
+				'iconsInOptionTags' => $iconsInOptionTags, // show icons in select options
+			)
+		)
+	);
+
+	// Add to tt_content
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumn, 1);
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'header', 'tx_iconfont_icon', 'after:header_layout');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('tt_content', 'headers', 'tx_iconfont_icon', 'after:header_layout');
+
+	// Add to pages
+	if ( isset($extConf['showIconFieldOnPage']) && $extConf['showIconFieldOnPage'] == 1 ) {
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumn, 1);
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette('pages', 'title', '--linebreak--, tx_iconfont_icon', 'after:subtitle');
+	}
+
+	// Default TS for iconfont
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
+
+	if (TYPO3_MODE == "BE")   {
+		// Add CSS for icon in RTE
+		$GLOBALS['TBE_STYLES']['inDocStyles_TBEstyle'] .= '@import "' . $htmlareaCssFile . '";';
+		// for 7.4+
+		$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;
+		$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['stylesheetDirectories']['css'] = $stylesheetDir;
+	}
+
+	// Page TSconfig
+	if ( $fontCssFile != '' ) {
 		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 RTE.default.contentCSS >
 RTE.default.contentCSS.default = typo3/sysext/rtehtmlarea/res/contentcss/default.css
 RTE.default.contentCSS.iconfont = ' . $fontCssFile . '
 ');
-	} else {
-		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
-RTE.default.contentCSS = ' . $contentCssFile . '
-');
 	}
 
-}
-
-// Default TS for iconfont
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
-
-// Optional for modified header (option in bootstrap_core to have subheader in header tag)
-if ( isset($extConf['enableHeaderRenderingOption']) && $extConf['enableHeaderRenderingOption'] ) {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Header', 'Subheader in header (addon)');
-}
-
-// for 7.4+
-if (TYPO3_MODE == "BE")   {
-	$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;
-	$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['stylesheetDirectories']['css'] = 'EXT:iconfont/Resources/Public/Css/';
 }

@@ -1,12 +1,22 @@
 
-# cat=basic; type=options[fontawesome,fontello,custom]; label=Use predefined fontawesome or fontello icons or custom definition.
+# cat=basic; type=options[fontawesome,custom]; label=Use predefined fontawesome or a custom font.:See tab "Custom" for custom icon font configuration.
 iconFont = fontawesome
 
-# cat=basic; type=string; label=Path to php file with custom icon definition array.
+# cat=basic; type=boolean; label=Show icon field on page record.:Adds the icon select field to the page record.
+showIconFieldOnPage = 0
+
+# cat=custom; type=string; label=Path to custom php file with icon definition array. Required.:As an example see file ext_tables_fontawesome.php from this extension.
 customIconDefinitionFile =
 
-# cat=basic; type=boolean; label=Support for the header/subheader rendering option in extension bootstrap_core.:Adds another static template.
-enableHeaderRenderingOption = 0
+# cat=custom; type=string; label=RTE Htmlarea Plugin Class.:Your own class extending RteHtmlAreaApi. E.g. Laxap\\Iconfont\\Extension\\InsertIcon
+customRtePluginClass =
 
-# cat=basic; type=boolean; label=Show icon field on page record.
-showIconFieldOnPage = 0
+# cat=custom; type=string; label=Path to custom htmlarea.css file:Will be added to inDocStyles_TBEstyle via @import "path-to-your-file". E.g. /fileadmin/rte/htmlarea.css.
+customHtmlareaCssFile =
+
+# cat=custom; type=string; label=Path to custom iconfont css for RTE.:Will be loaded by the RTE in the backend and included via incluceCSS on the frontend.
+customFontCssFile =
+
+# cat=custom; type=string; label=Path to custom stylesheet directory.:Used by the RTE.
+customStylesheetDirectory =
+
