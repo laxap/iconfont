@@ -8,11 +8,8 @@ showIconFieldOnPage = 0
 # cat=custom; type=string; label=Path to custom php file with icon definition array. Required.:As an example see file ext_tables_fontawesome.php from this extension.
 customIconDefinitionFile =
 
-# cat=custom; type=string; label=RTE Htmlarea Plugin Class.:Your own class extending RteHtmlAreaApi. E.g. Laxap\\Iconfont\\Extension\\InsertIcon
+# cat=custom; type=string; label=RTE Htmlarea Plugin Class.:Your own class extending RteHtmlAreaApi. E.g. Laxap\IconfontFontello\Extension\InsertIcon
 customRtePluginClass =
-
-# cat=custom; type=string; label=Path to custom htmlarea.css file:Will be added to inDocStyles_TBEstyle via @import "path-to-your-file". E.g. /fileadmin/rte/htmlarea.css.
-customHtmlareaCssFile =
 
 # cat=custom; type=string; label=Path to custom iconfont css for RTE.:Will be loaded by the RTE in the backend and included via incluceCSS on the frontend.
 customFontCssFile =
