@@ -16,13 +16,13 @@ Installation
 
 - Install the extension.
 
-- In the extension configuration select the iconfont - fontawesome or fontello.
+- In the extension configuration you may switch to custom font. See tab Custom for additional settings.
 
 |img-extconf|
 
 
 
-- Include the static template.
+- Include the static template. **Version 0.9.0+ supports only fluid_styled_content!** lib.fluidContent.partialRootPaths.10 will be set to overwrite the Header partials.
 
 |img-includestatic|
 
@@ -31,17 +31,7 @@ Installation
 Displaying icons in the Rich Text Editor
 ----------------------------------------
 
-Since version 0.7.1 the font icon CSS file is added to RTE.default.contentCSS.
-
-TYPO3 6.2 supports only one css file. An additional css file is used to load the default rte css and the icon font css.
-
-.. code-block:: typoscript
-
-   RTE.default.contentCSS = typo3conf/ext/iconfont/Resources/Public/Css/rte/font-awesome.css
-
-|img-contentcss|
-
-TYPO3 7.2 supports multiple css. The setting applied by this extension is:
+The font icon CSS file is added to RTE.default.contentCSS.
 
 .. code-block:: typoscript
 

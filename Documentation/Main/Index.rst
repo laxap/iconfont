@@ -14,9 +14,9 @@ Extension Key: iconfont
 :Language: en
 :Keywords: forEditors, forAdmins, forDevelopers
 
-Copyright 2014-2015, Pascal Mayer <typo3@simple.ch>
+Copyright 2014-2016, Pascal Mayer <typo3@simple.ch>
 
-Copyright 2015, |author|
+Copyright 2016, |author|
 
 This document is published under the Open Content License
 
