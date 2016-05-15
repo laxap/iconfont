@@ -75,10 +75,15 @@ if ( $iconDefinitionFile != '' ) {
 
 	if (TYPO3_MODE == "BE")   {
 		// Add CSS for icon in RTE
-		$GLOBALS['TBE_STYLES']['inDocStyles_TBEstyle'] .= '@import "' . $htmlareaCssFile . '";';
+		if ( $htmlareaCssFile != '' ) {
+			$GLOBALS['TBE_STYLES']['inDocStyles_TBEstyle'] .= '@import "' . $htmlareaCssFile . '";';
+		}
 		// for 7.4+
-		$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;
-		$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['stylesheetDirectories']['css'] = $stylesheetDir;
+		if ( $stylesheetDir != '' ) {
+			$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;
+			$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['stylesheetDirectories']['css'] = $stylesheetDir;
+		}
+
 	}
 
 	// Page TSconfig
