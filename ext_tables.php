@@ -19,7 +19,6 @@ switch ( $extConf['iconFont'] ) {
 		} else {
 			$iconDefinitionFile = '';
 		}
-		$htmlareaCssFile = isset($extConf['customHtmlareaCssFile'])?$extConf['customHtmlareaCssFile']:'';
 		$fontCssFile = isset($extConf['customFontCssFile'])?$extConf['customFontCssFile']:'';
 		$stylesheetDir = isset($extConf['customStylesheetDirectory'])?$extConf['customStylesheetDirectory']:'';
 		$iconsInOptionTags = 0; // may be enabled via TCEFORM for custom fonts
@@ -27,7 +26,6 @@ switch ( $extConf['iconFont'] ) {
 
 	default:
 		$iconDefinitionFile = 'typo3conf/ext/iconfont/ext_tables_fontawesome.php';
-		$htmlareaCssFile = '/typo3conf/ext/iconfont/Resources/Public/Css/htmlarea.min.css';
 		$fontCssFile = 'typo3conf/ext/iconfont/Resources/Public/Lib/font-awesome/css/font-awesome.min.css';
 		$stylesheetDir = 'EXT:iconfont/Resources/Public/Css/';
 		$iconsInOptionTags = 1;
@@ -74,11 +72,6 @@ if ( $iconDefinitionFile != '' ) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Icon Font');
 
 	if (TYPO3_MODE == "BE")   {
-		// Add CSS for icon in RTE
-		if ( $htmlareaCssFile != '' ) {
-			$GLOBALS['TBE_STYLES']['inDocStyles_TBEstyle'] .= '@import "' . $htmlareaCssFile . '";';
-		}
-		// for 7.4+
 		if ( $stylesheetDir != '' ) {
 			$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['name'] = $_EXTKEY;
 			$GLOBALS['TBE_STYLES']['skins'][$_EXTKEY]['stylesheetDirectories']['css'] = $stylesheetDir;
