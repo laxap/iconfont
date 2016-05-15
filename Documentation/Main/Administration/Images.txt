@@ -8,3 +8,7 @@
 
 .. |img-contentcss|      image:: ../Images/Administration/contentcss.png
 .. :align: left
+
+
+.. |img-extconfcustom|      image:: ../Images/Administration/ExtConfigCustom.png
+.. :align: left
