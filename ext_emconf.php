@@ -30,6 +30,12 @@ $EM_CONF[$_EXTKEY] = array(
 			'fontawesome' => '',
 		),
 	),
+	'autoload' => 
+	    array(
+	      'psr-4' => array(
+        	'Laxap\\Iconfont\\' => 'Classes'
+        )
+    ),
 );
 
 ?>
