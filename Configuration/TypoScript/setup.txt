@@ -1,6 +1,6 @@
 
 # overwrite header partials
-lib.fluidContent.partialRootPaths.10 = EXT:iconfont/Resources/Private/Partials/
+lib.contentElement.partialRootPaths.10 = EXT:iconfont/Resources/Private/Partials/
 
 # load iconfont css in frontend
 page {

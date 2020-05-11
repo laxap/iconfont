@@ -24,24 +24,9 @@ switch ( $extConf['iconFont'] ) {
 		break;
 }
 
-// --- Add RTE plugin --
-//
-if ( $pluginClass != '' ) {
-	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon'] = array();
-	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['objectReference'] = $pluginClass;
-	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['addIconsToSkin'] = 1;
-	$TYPO3_CONF_VARS['EXTCONF']['rtehtmlarea']['plugins']['InsertIcon']['disableInFE'] = 0;
-}
-
-
 // TypoScript constants
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('
 plugin.tx_iconfont {
     # cat=tx_iconfont/base/010; type=string; label=Path to icon font css file
     cssFile = ' . $fontCssFile . '
 }');
-
-
-// --- Load default page TSconfig ---
-//
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:iconfont/Configuration/TypoScript/tsconfig.ts">');
