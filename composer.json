@@ -3,7 +3,15 @@
   "type": "typo3-cms-extension",
   "version": "0.9.0",
   "description": "Support for fontawesome or a custom icon font. Allows to show an icon besides headers and to add icons via RTE. RTE feature based on code from ext:fontawesome.",
-  "keywords": ["typo3", "TYPO3 CMS", "bootstrap", "bsdist", "fontawesome", "font awesome", "iconfont"],
+  "keywords": [
+    "typo3",
+    "TYPO3 CMS",
+    "bootstrap",
+    "bsdist",
+    "fontawesome",
+    "font awesome",
+    "iconfont"
+  ],
   "homepage": "http://www.bsdist.ch",
   "license": "GPL-2.0+",
   "authors": [
@@ -12,5 +20,15 @@
       "email": "typo3@bsdist.ch",
       "role": "Developer"
     }
-  ]
+  ],
+  "require": {
+    "typo3/cms-core": "^9.5",
+    "typo3/cms-backend": "^9.5",
+    "typo3/cms-frontend": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Laxap\\Iconfont\\": "Classes/"
+    }
+  }
 }

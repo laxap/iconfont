@@ -12,20 +12,20 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_email' => 'typo3@bsdist.ch',
 	'author_company' => '',
 	'state' => 'beta',
-	'shy' => '',
 	'priority' => '',
 	'module' => '',
-	'internal' => '',
-	'uploadfolder' => '0',
+	'uploadfolder' => false,
 	'createDirs' => '',
 	'modify_tables' => 'tt_content,pages',
 	'clearCacheOnLoad' => 1,
 	'lockType' => '',
 	'version' => '0.9.0',
 	'constraints' => array(
-		'depends' => array(
-			'typo3' => '7.6.0-7.6.99',
-		),
+        'depends' => [
+            'typo3' => '9.5.0-9.5.99',
+            'backend' => '9.5.0-9.5.99',
+            'frontend' => '9.5.0-9.5.99'
+        ],
 		'conflicts' => array(
 			'fontawesome' => '',
 		),
