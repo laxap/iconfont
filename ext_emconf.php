@@ -22,10 +22,9 @@ $EM_CONF[$_EXTKEY] = array(
 	'version' => '0.9.0',
 	'constraints' => array(
         'depends' => [
-            'typo3' => '8.7.0-8.7.99',
-            'backend' => '8.7.0-8.7.99',
-            'frontend' => '8.7.0-8.7.99',
-            'lang' => '8.7.0-8.7.99',
+            'typo3' => '9.5.0-9.5.99',
+            'backend' => '9.5.0-9.5.99',
+            'frontend' => '9.5.0-9.5.99'
         ],
 		'conflicts' => array(
 			'fontawesome' => '',
